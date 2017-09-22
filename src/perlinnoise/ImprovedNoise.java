@@ -14,12 +14,13 @@ public final class ImprovedNoise {
     
     // generates a grid of vectors with perlin niose determined direction
     public void getVectorGrid(Graphics g){
+        time += 0.01;
         for(int y = 0 ; y < Settings.ROWS ; y++){
             for(int x = 0 ;  x < Settings.COLLUMNS ; x++){
                 double dx = (double) x / Settings.HEIGHT;
                 double dy = (double) y / Settings.HEIGHT;
                 
-                double noise = noise(dx * frequency ,dy * frequency , 4);
+                double noise = noise(dx * frequency ,dy * frequency , time);
                 noise = (noise - 1) / 2;
                 g.setColor(Color.black);
 //                g.fillRect(x * Settings.SCALE , y * Settings.SCALE , Settings.SCALE, Settings.SCALE);
