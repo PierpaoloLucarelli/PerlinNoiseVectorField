@@ -41,7 +41,8 @@ public final class ImprovedNoise {
             }
         }
         for(int i = 0 ; i < particles.length ; i++){
-                    particles[i].show(g);
+            particles[i].update();
+            particles[i].show(g);
         }
     }
     

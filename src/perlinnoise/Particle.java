@@ -20,7 +20,8 @@ public class Particle {
     public Particle() {
         Random rnd = new Random();
         this.pos = new Vector(rnd.nextInt(Settings.WIDTH), rnd.nextInt(Settings.HEIGHT));
-        this.vel = new Vector(0, 0);
+        Boolean neg = rnd.nextBoolean();
+        this.vel = new Vector(rnd.nextInt(5) * (neg ? -1 : 1), rnd.nextInt(5) * (neg ? -1 : 1));
         this.acc = new Vector(0, 0);
     }
     
