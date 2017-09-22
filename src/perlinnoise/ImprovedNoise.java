@@ -25,7 +25,8 @@ public final class ImprovedNoise {
 //                g.fillRect(x * Settings.SCALE , y * Settings.SCALE , Settings.SCALE, Settings.SCALE);
 //                g.setColor(Color.BLACK);
 //                g.drawRect(x * Settings.SCALE , y * Settings.SCALE , Settings.SCALE, Settings.SCALE);
-                GridVector v = new GridVector(330);
+                int angle = (int)(Math.abs(noise) * 360);
+                GridVector v = new GridVector(angle);
                 int startX = x * Settings.SCALE;
                 int startY = y * Settings.SCALE;
                 int endX = startX + (int) (Math.cos(v.getAngle()) * Settings.SCALE);
