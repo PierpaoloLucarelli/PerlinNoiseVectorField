@@ -17,4 +17,5 @@ public class Settings {
     public static final int ROWS = HEIGHT / SCALE;
     public static final int COLLUMNS = WIDTH / SCALE;
     
+    public static final int NO_PARTICLES = 100;
 }

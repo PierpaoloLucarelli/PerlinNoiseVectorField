@@ -10,7 +10,12 @@ public final class ImprovedNoise {
     private static int frequency = 32 ;
     private static double time = 0;
     private static BufferedImage image = new BufferedImage(Settings.WIDTH, Settings.HEIGHT, BufferedImage.TYPE_INT_RGB);
-    
+    private Particle[] particles;
+
+    public ImprovedNoise(Particle[] p) {
+        this.particles = p;
+    }
+   
     
     // generates a grid of vectors with perlin niose determined direction
     public void getVectorGrid(Graphics g){
@@ -23,9 +28,7 @@ public final class ImprovedNoise {
                 double noise = noise(dx * frequency ,dy * frequency , time);
                 noise = (noise - 1) / 2;
                 g.setColor(Color.black);
-//                g.fillRect(x * Settings.SCALE , y * Settings.SCALE , Settings.SCALE, Settings.SCALE);
-//                g.setColor(Color.BLACK);
-//                g.drawRect(x * Settings.SCALE , y * Settings.SCALE , Settings.SCALE, Settings.SCALE);
+
                 double  angle = (int)(Math.abs(noise) * 360);
                 angle = Math.toRadians(angle);
                 Vector v = new Vector(x * Settings.SCALE, y * Settings.SCALE);
@@ -36,6 +39,9 @@ public final class ImprovedNoise {
                         endX,
                         endY);
             }
+        }
+        for(int i = 0 ; i < particles.length ; i++){
+                    particles[i].show(g);
         }
     }
     

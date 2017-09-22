@@ -15,15 +15,21 @@ import javax.swing.Timer;
  */
 public class MainPanel extends JPanel{
     private Timer timer = new Timer(30, e -> repaint());
+    private Particle[] particles = new Particle[Settings.NO_PARTICLES];
+
+  
     
     public MainPanel(){
         timer.start();
+        for(int x = 0 ; x < this.particles.length ; x++){
+            particles[x] = new Particle();
+        }   
     }
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
 //        g.drawImage(ImprovedNoise.getNoiseImage(), 0 , 0, this);
-        ImprovedNoise noise = new ImprovedNoise();
+        ImprovedNoise noise = new ImprovedNoise(particles);
         noise.getVectorGrid(g);
     }
 }

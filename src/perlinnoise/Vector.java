@@ -35,5 +35,8 @@ public class Vector {
         this.y = y;
     }
     
-    
+    public void add(Vector v){
+        this.x += v.getX();
+        this.y += v.getY();
+    }
 }
