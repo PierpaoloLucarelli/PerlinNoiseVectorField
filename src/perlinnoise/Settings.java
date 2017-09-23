@@ -11,8 +11,8 @@ package perlinnoise;
  */
 public class Settings {
     
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 480;
+    public static final int WIDTH = 1280;
+    public static final int HEIGHT = 720;
     public static final int SCALE = 20;
     public static final int ROWS = (int)Math.floor(HEIGHT / SCALE);
     public static final int COLLUMNS = (int) Math.floor(WIDTH / SCALE);
