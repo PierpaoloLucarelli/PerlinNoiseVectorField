@@ -2,12 +2,13 @@ package perlinnoise;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
 
 public final class ImprovedNoise {
-    private static int frequency = 32 ;
+    private static int frequency = 100;
     private static double time = 0;
     private static BufferedImage image = new BufferedImage(Settings.WIDTH, Settings.HEIGHT, BufferedImage.TYPE_INT_RGB);
     private Particle[] particles;
@@ -20,13 +21,13 @@ public final class ImprovedNoise {
    
     
     // generates a grid of vectors with perlin niose determined direction
-    public void getVectorGrid(Graphics g){
+    public void getVectorGrid(Graphics2D g){
         time += 0.01;
         this.drawVectors(g);
         this.drawParticles(g);
     }
     
-    public void drawVectors(Graphics g){
+    public void drawVectors(Graphics2D g){
         for(int y = 0 ; y < Settings.ROWS ; y++){
             for(int x = 0 ;  x < Settings.COLLUMNS ; x++){
                 double dx = (double) x / Settings.HEIGHT;
@@ -36,10 +37,10 @@ public final class ImprovedNoise {
                 noise = (noise - 1) / 2;
                 g.setColor(Color.black);
 
-                double  angle = Math.abs(noise) * 360 * 4;
+                double  angle = Math.abs(noise) * 360 * 2;
                 angle = Math.toRadians(angle);
                 int index = x + y * Settings.COLLUMNS;
-                Vector v = new Vector(angle, 2);
+                Vector v = new Vector(angle, 10);
                 this.flowField[index] = v;
 //                System.out.println(v.getX() + " " + v.getY() + " " + v.calMagn());
 //                int startX = x * Settings.SCALE;
@@ -51,7 +52,7 @@ public final class ImprovedNoise {
         }
     }
     
-    public void drawParticles(Graphics g){
+    public void drawParticles(Graphics2D g){
         for(int i = 0 ; i < particles.length ; i++){
             particles[i].follow(this.flowField);
             particles[i].update();
