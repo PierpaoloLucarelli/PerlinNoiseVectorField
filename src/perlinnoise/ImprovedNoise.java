@@ -32,21 +32,21 @@ public final class ImprovedNoise {
                 double dx = (double) x / Settings.HEIGHT;
                 double dy = (double) y / Settings.HEIGHT;
                 
-                double noise = noise(dx * frequency ,dy * frequency , 4);
+                double noise = noise(dx * frequency ,dy * frequency , time);
                 noise = (noise - 1) / 2;
                 g.setColor(Color.black);
 
-                double  angle = Math.abs(noise) * 360;
+                double  angle = Math.abs(noise) * 360 * 4;
                 angle = Math.toRadians(angle);
                 int index = x + y * Settings.COLLUMNS;
-                Vector v = new Vector(angle);
+                Vector v = new Vector(angle, 2);
                 this.flowField[index] = v;
 //                System.out.println(v.getX() + " " + v.getY() + " " + v.calMagn());
-                int startX = x * Settings.SCALE;
-                int startY = y * Settings.SCALE;
-                int endX = startX + (int) (Math.cos(angle) * Settings.SCALE);
-                int endY = startY + (int) (Math.sin(angle) * Settings.SCALE);
-                g.drawLine(startX, startY, endX, endY);
+//                int startX = x * Settings.SCALE;
+//                int startY = y * Settings.SCALE;
+//                int endX = startX + (int) (Math.cos(angle) * Settings.SCALE);
+//                int endY = startY + (int) (Math.sin(angle) * Settings.SCALE);
+//                g.drawLine(startX, startY, endX, endY);
             }
         }
     }

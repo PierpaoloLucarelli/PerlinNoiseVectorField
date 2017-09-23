@@ -16,6 +16,7 @@ public class Particle {
     private Vector pos;
     private Vector vel;
     private Vector acc;
+    private int maxSpeed;
 
     public Particle() {
         Random rnd = new Random();
@@ -23,10 +24,12 @@ public class Particle {
         Boolean neg = rnd.nextBoolean();
         this.vel = new Vector(0,0);
         this.acc = new Vector(0, 0);
+        this.maxSpeed = 6;
     }
     
     public void update(){
         this.vel.add(this.acc);
+        this.vel.limitMag(maxSpeed);
         this.pos.add(this.vel);
         this.acc.setX(0);
         this.acc.setY(0);
@@ -34,8 +37,8 @@ public class Particle {
     
     public void show(Graphics g){
         g.drawOval((int)this.pos.getX(), (int)this.pos.getY(), 2, 2);
-        System.out.println("x: " + this.pos.getX());
-        System.out.println("y: " + this.pos.getY());
+//        System.out.println("x: " + this.pos.getX());
+//        System.out.println("y: " + this.pos.getY());
     }
     
     public void edges(){
@@ -54,10 +57,10 @@ public class Particle {
         int x = (int)Math.floor(this.pos.getX() / Settings.SCALE);
         int y = (int)Math.floor(this.pos.getY() / Settings.SCALE);
         int index = x + (y * Settings.COLLUMNS);
-        System.out.println(index);
-        System.out.println("x: " + this.pos.getX());
-        System.out.println("y: " + this.pos.getY());
-        System.out.println("index: "  + index + " " + x + " " + y + " cols: "  + Settings.COLLUMNS);
+//        System.out.println(index);
+//        System.out.println("x: " + this.pos.getX());
+//        System.out.println("y: " + this.pos.getY());
+//        System.out.println("index: "  + index + " " + x + " " + y + " cols: "  + Settings.COLLUMNS);
         Vector force = ff[index];
         this.applyForce(force);
         

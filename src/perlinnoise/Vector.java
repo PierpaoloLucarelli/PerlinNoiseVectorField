@@ -53,11 +53,18 @@ public class Vector {
     public void add(Vector v){
         this.x += v.getX();
         this.y += v.getY();
+        this.magnitude = this.calMagn();
     }
     
     public double calMagn(){
         double mag = Math.sqrt( (Math.pow(x, 2) + Math.pow(y, 2)) );
         return mag;
+    }
+    
+    public void limitMag(int limit){
+        this.x = this.x * limit / this.magnitude;
+        this.y = this.y * limit / this.magnitude;
+        this.magnitude = this.calMagn();
     }
 
     @Override
