@@ -11,15 +11,24 @@ package perlinnoise;
  */
 public class Vector {
     
-    private int x;
-    private int y;
+    private double x;
+    private double y;
+    private double magnitude;
 
-    public Vector(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Vector(double angle) {
+        this.magnitude = 1.0;
+        this.x = this.magnitude * Math.cos(angle);
+        this.y = this.magnitude * Math.sin(angle);
     }
+    
+    public Vector(double angle, double mag) {
+        this.magnitude = mag;
+        this.x = this.magnitude * Math.cos(angle);
+        this.y = this.magnitude * Math.sin(angle);
+    }
+    
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -27,7 +36,7 @@ public class Vector {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -38,5 +47,10 @@ public class Vector {
     public void add(Vector v){
         this.x += v.getX();
         this.y += v.getY();
+    }
+    
+    public double calMagn(){
+        double mag = Math.sqrt( (Math.pow(x, 2) + Math.pow(y, 2)) );
+        return mag;
     }
 }

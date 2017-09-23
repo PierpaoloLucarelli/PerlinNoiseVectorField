@@ -33,7 +33,18 @@ public class Particle {
     }
     
     public void show(Graphics g){
-        g.drawOval(this.pos.getX(), this.pos.getY(), 2, 2);
+        g.drawOval((int)this.pos.getX(), (int)this.pos.getY(), 2, 2);
+    }
+    
+    public void edges(){
+        if (this.pos.getX() > Settings.WIDTH)
+            this.pos.setX(0);
+        if (this.pos.getX() < 0)
+            this.pos.setX(Settings.WIDTH);
+        if (this.pos.getY() > Settings.HEIGHT)
+            this.pos.setY(0);
+        if (this.pos.getY() < 0)
+            this.pos.setY(Settings.HEIGHT);
     }
     
     

@@ -20,29 +20,41 @@ public final class ImprovedNoise {
     // generates a grid of vectors with perlin niose determined direction
     public void getVectorGrid(Graphics g){
         time += 0.01;
+        this.drawVectors(g);
+//        this.drawParticles(g);
+    }
+    
+    public void drawVectors(Graphics g){
         for(int y = 0 ; y < Settings.ROWS ; y++){
             for(int x = 0 ;  x < Settings.COLLUMNS ; x++){
                 double dx = (double) x / Settings.HEIGHT;
                 double dy = (double) y / Settings.HEIGHT;
                 
-                double noise = noise(dx * frequency ,dy * frequency , time);
+                double noise = noise(dx * frequency ,dy * frequency , 4);
                 noise = (noise - 1) / 2;
                 g.setColor(Color.black);
 
-                double  angle = (int)(Math.abs(noise) * 360);
+                double  angle = Math.abs(noise) * 360;
                 angle = Math.toRadians(angle);
-                Vector v = new Vector(x * Settings.SCALE, y * Settings.SCALE);
-                int endX = v.getX() + (int) (Math.cos(angle) * Settings.SCALE);
-                int endY = v.getY() + (int) (Math.sin(angle) * Settings.SCALE);
-                g.drawLine(v.getX(),
-                        v.getY(),
-                        endX,
-                        endY);
+//                Vector v = new Vector(x * Settings.SCALE, y * Settings.SCALE);
+//                int endX = v.getX() + (int) (Math.cos(angle) * Settings.SCALE);
+//                int endY = v.getY() + (int) (Math.sin(angle) * Settings.SCALE);
+                Vector v = new Vector(angle);
+                System.out.println(v.getX() + " " + v.getY() + " " + v.calMagn());
+                int startX = x * Settings.SCALE;
+                int startY = y * Settings.SCALE;
+                int endX = startX + (int) (Math.cos(angle) * Settings.SCALE);
+                int endY = startY + (int) (Math.sin(angle) * Settings.SCALE);
+                g.drawLine(startX, startY, endX, endY);
             }
         }
+    }
+    
+    public void drawParticles(Graphics g){
         for(int i = 0 ; i < particles.length ; i++){
             particles[i].update();
             particles[i].show(g);
+            particles[i].edges();
         }
     }
     
