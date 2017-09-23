@@ -27,6 +27,12 @@ public class Vector {
         this.y = this.magnitude * Math.sin(angle);
     }
     
+    public Vector(int x, int y){
+        this.x = x;
+        this.y = y;
+        this.magnitude = this.calMagn();
+    }
+    
 
     public double getX() {
         return x;
@@ -53,4 +59,11 @@ public class Vector {
         double mag = Math.sqrt( (Math.pow(x, 2) + Math.pow(y, 2)) );
         return mag;
     }
+
+    @Override
+    public String toString() {
+        return "Vector{" + "x=" + x + ", y=" + y + ", magnitude=" + magnitude + '}';
+    }
+    
+    
 }
