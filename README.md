@@ -1,4 +1,4 @@
-![perlin noise java](https://pierpaololucarellidotcom.files.wordpress.com/2017/08/thumb.png)
+![perlin noise java](https://pierpaololucarelli.com/wp-content/uploads/2018/02/gal6.png)
 original algorithm: 
 > http://mrl.nyu.edu/~perlin/noise/
 
@@ -18,7 +18,7 @@ A set of particles are created and dropped on to the plane at a random point. Ea
 
 For every frame of the animation, each vector of the grid is applied as a force to the particles on that particular grid square. This will cause the particles to move in the direction of the vector flow field.
 
-![perlin noise java](https://pierpaololucarellidotcom.files.wordpress.com/2017/09/screen-shot-2017-09-25-at-13-03-031.png?w=359&h=203&zoom=2)
+![perlin noise java](https://pierpaololucarelli.com/wp-content/uploads/2018/02/gal1.png)
 
 
-![perlin noise java](https://pierpaololucarellidotcom.files.wordpress.com/2017/09/perln2.png?w=372&h=203&zoom=2)
+![perlin noise java](https://pierpaololucarelli.com/wp-content/uploads/2018/02/gal2.png)
